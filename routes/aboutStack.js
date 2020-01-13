@@ -1,11 +1,19 @@
+import React from "react";
+
 import { createStackNavigator } from "react-navigation-stack";
 
 import About from "../screens/About";
-import ReviewDetails from "../screens/ReviewDetails";
+
+import Header from "../shared/header";
 
 const screens = {
   About: {
-    screen: About
+    screen: About,
+    navigationOptions: ({ navigation }) => {
+      return {
+        headerTitle: () => <Header navigation={navigation} title="GameZone" />
+      };
+    }
   }
 };
 
@@ -15,7 +23,8 @@ const AboutStack = createStackNavigator(screens, {
     headerStyle: {
       backgroundColor: "#eee",
       height: 80
-    }
+    },
+    headerTitleAlign: "center"
   }
 });
 
