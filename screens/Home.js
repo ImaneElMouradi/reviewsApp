@@ -9,6 +9,8 @@ import {
 
 import { globalStyles } from "../styles/global";
 
+import Card from "../shared/card";
+
 export default function Home({ navigation }) {
   const [reviews, setReviews] = useState([
     {
@@ -33,14 +35,15 @@ export default function Home({ navigation }) {
 
   return (
     <View style={globalStyles.container}>
-      <Text style={globalStyles.titleText}>Home Screen</Text>
       <FlatList
         data={reviews}
         renderItem={({ item }) => (
           <TouchableOpacity
             onPress={() => navigation.navigate("ReviewDetails", item)}
           >
-            <Text>{item.title}</Text>
+            <Card>
+              <Text style={globalStyles.titleText}>{item.title}</Text>
+            </Card>
           </TouchableOpacity>
         )}
       />
